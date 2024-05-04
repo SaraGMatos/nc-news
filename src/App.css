@@ -13,7 +13,7 @@ body {
   font-family: comfortaa;
 }
 
-/*! FORM */
+/*! LOGIN PAGE */
 
 .login-page {
   background-color: rgb(238, 244, 246);
@@ -76,5 +76,45 @@ body {
 }
 
 .login-page button:hover {
+  box-shadow: 5px 10px rgb(142, 142, 218);
+}
+
+/*! HEADER */
+
+header {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid blue;
+  border-bottom-width: 5px;
+  height: 15%;
+
+  padding: 20px;
+
+  background-color: rgb(218, 238, 245);
+}
+
+.header-content {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header-content h1 {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.header-button {
+  align-self: center;
+  border: solid blue;
+  border-radius: 5px;
+  height: 50%;
+  padding: 10px 15px;
+
+  width: 20%;
+}
+
+.header-button:hover {
   box-shadow: 5px 10px rgb(142, 142, 218);
 }
