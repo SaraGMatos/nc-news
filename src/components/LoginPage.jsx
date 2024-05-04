@@ -2,7 +2,7 @@ import { useState } from "react";
 import SubmissionAlert from "./SubmissionAlert";
 import { useNavigate } from "react-router-dom";
 
-function LoginPage() {
+function LoginPage({ setUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError] = useState(false);
@@ -12,6 +12,7 @@ function LoginPage() {
     event.preventDefault();
     if (username === "saramatos" && password === "test") {
       setShowError(false);
+      setUser(username);
       navigate("/articles");
     } else {
       setShowError(true);
