@@ -15,3 +15,7 @@ export function fetchArticles(currentPage) {
 export function fetchArticleById(id) {
   return ncNewsApi.get(`/articles/${id}`);
 }
+
+export function fetchCommentsById(id) {
+  return ncNewsApi.get(`/articles/${id}/comments`);
+}
