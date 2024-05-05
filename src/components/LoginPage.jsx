@@ -1,11 +1,15 @@
 import { useState } from "react";
 import SubmissionAlert from "./SubmissionAlert";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../contexts/User";
 
-function LoginPage({ setUser }) {
+function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showError, setShowError] = useState(false);
+  const { setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   function handleSubmit(event) {

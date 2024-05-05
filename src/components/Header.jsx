@@ -12,7 +12,7 @@ function Header({ user }) {
         <h1>NC NEWS</h1>
         <p>Hello {user}!</p>
       </div>
-      <button class="header-button" onClick={navigateToLogin}>
+      <button className="header-button" onClick={navigateToLogin}>
         Log out
       </button>
     </header>
