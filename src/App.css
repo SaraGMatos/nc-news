@@ -75,7 +75,6 @@
     align-self: center;
     font-weight: bold;
     padding: 5px;
-
     background-color: rgb(238, 244, 246);
   }
 
@@ -85,7 +84,9 @@
 
   /*! HEADER */
 
-  header {
+  .page-header {
+    width: 100%;
+    margin: 0;
     display: flex;
     justify-content: space-around;
     border-bottom: solid blue;
@@ -115,6 +116,7 @@
     border-radius: 5px;
     height: 50%;
     padding: 10px 15px;
+    min-width: 100px;
     width: 20%;
     line-height: 1;
   }
@@ -197,6 +199,50 @@
   .articles-button:hover {
     box-shadow: 5px 10px rgb(142, 142, 218);
   }
+
+  /*! SINGLE ARTICLE HEADER */
+
+  .article-header {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    align-items: flex-start;
+    margin: 10px;
+    padding: 15px;
+    border-bottom: solid blueviolet;
+    flex-grow: 1;
+  }
+
+  .article-topic {
+    align-self: center;
+  }
+
+  .article-title {
+    align-self: center;
+    font-weight: bold;
+    font-size: large;
+    margin: 5px;
+  }
+
+  .article-author-date {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .article-body {
+    margin: 20px;
+    margin-top: 25px;
+    text-align: justify;
+  }
+
+  .article-image {
+    width: 90%;
+    margin: 20px;
+    align-self: center;
+  }
 }
 
 /*! ---------------------------------------------------------------------------------------------------------------- */
@@ -278,7 +324,7 @@ body {
 
 /*! HEADER */
 
-header {
+.page-header {
   display: flex;
   justify-content: space-around;
   border-bottom: solid blue;
@@ -389,4 +435,48 @@ header {
 
 .articles-button:hover {
   box-shadow: 5px 10px rgb(142, 142, 218);
+}
+
+/*! SINGLE ARTICLE HEADER */
+
+.article-header {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  align-items: flex-start;
+  margin: 10px;
+  padding: 15px;
+  border-bottom: solid blueviolet;
+  flex-grow: 1;
+}
+
+.article-topic {
+  align-self: center;
+}
+
+.article-title {
+  align-self: center;
+  font-weight: bold;
+  font-size: large;
+  margin: 5px;
+}
+
+.article-author-date {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.article-body {
+  margin: 20px;
+  margin-top: 25px;
+  text-align: justify;
+}
+
+.article-image {
+  width: 90%;
+  margin: 20px;
+  align-self: center;
 }
