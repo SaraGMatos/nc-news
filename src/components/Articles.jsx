@@ -4,11 +4,11 @@ import Header from "./Header";
 import ArticleCard from "./ArticleCard";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
+import { Link } from "react-router-dom";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
   const { user } = useContext(UserContext);
 
   function handleClickPrevious() {
@@ -42,20 +42,24 @@ function Articles() {
           })}
         </ul>
         <div className="button-container">
-          <button
-            className="articles-button"
-            disabled={currentPage === 1}
-            onClick={handleClickPrevious}
-          >
-            Previous
-          </button>
-          <button
-            className="articles-button"
-            disabled={articles.length < 10}
-            onClick={handleClickNext}
-          >
-            Next
-          </button>
+          <Link to={`/articles?p=${currentPage - 1}`}>
+            <button
+              className="articles-button"
+              disabled={currentPage === 1}
+              onClick={handleClickPrevious}
+            >
+              Previous
+            </button>
+          </Link>
+          <Link to={`/articles?p=${currentPage + 1}`}>
+            <button
+              className="articles-button"
+              disabled={articles.length < 10}
+              onClick={handleClickNext}
+            >
+              Next
+            </button>
+          </Link>
         </div>
       </div>
     </div>

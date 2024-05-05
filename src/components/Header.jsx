@@ -7,7 +7,7 @@ function Header({ user }) {
   }
 
   return (
-    <header>
+    <header className="page-header">
       <div className="header-content">
         <h1>NC NEWS</h1>
         <p>Hello {user}!</p>

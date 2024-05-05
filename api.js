@@ -11,3 +11,7 @@ export function fetchArticles(currentPage) {
     },
   });
 }
+
+export function fetchArticleById(id) {
+  return ncNewsApi.get(`/articles/${id}`);
+}
