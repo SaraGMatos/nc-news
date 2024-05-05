@@ -568,3 +568,19 @@ body {
 .expandable-button:hover {
   box-shadow: 5px 10px rgb(142, 142, 218);
 }
+
+.comment-votes {
+  display: flex;
+  width: 40%;
+  justify-content: space-evenly;
+}
+
+.comment-votes button {
+  border: solid blue;
+  width: 30px;
+  border-radius: 2px;
+}
+
+.comment-votes button:hover {
+  box-shadow: 5px 10px rgb(142, 142, 218);
+}
