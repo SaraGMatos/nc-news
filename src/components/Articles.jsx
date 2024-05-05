@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
   const { user } = useContext(UserContext);
 
   function handleClickPrevious() {
