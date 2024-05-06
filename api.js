@@ -19,3 +19,9 @@ export function fetchArticleById(id) {
 export function fetchCommentsById(id) {
   return ncNewsApi.get(`/articles/${id}/comments`);
 }
+
+export function updateVoteByCommentId(votes, id) {
+  return ncNewsApi.patch(`/comments/${id}`, {
+    inc_votes: votes,
+  });
+}
