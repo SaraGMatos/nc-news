@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Expandable({ children }) {
   const [isHidden, setIsHidden] = useState(true);
