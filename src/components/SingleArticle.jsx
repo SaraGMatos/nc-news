@@ -8,18 +8,24 @@ import { UserContext } from "../contexts/User";
 import Expandable from "./Expandable";
 import ArticleComments from "./ArticleComments";
 import { updateArticleByArticleId } from "../../api";
+import ErrorAlert from "./ErrorAlert";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
   const { user } = useContext(UserContext);
   const { id } = useParams();
   const [voteUpdate, setVoteUpdate] = useState(0);
+  const [error, setError] = useState(false);
 
   function getArticleById() {
-    fetchArticleById(id).then((articleData) => {
-      const articleInfo = articleData.data.article;
-      setArticle(articleInfo);
-    });
+    fetchArticleById(id)
+      .then((articleData) => {
+        const articleInfo = articleData.data.article;
+        setArticle(articleInfo);
+      })
+      .catch(() => {
+        setError(true);
+      });
   }
   useEffect(getArticleById, [id]);
 
@@ -54,6 +60,9 @@ function SingleArticle() {
           -
         </button>
       </div>
+      {error && (
+        <ErrorAlert message={"Something went wrong. Please try again!"} />
+      )}
       <Expandable id={id}>
         <ArticleComments id={id} />
       </Expandable>
