@@ -27,7 +27,16 @@ export function updateVoteByCommentId(votes, id) {
 }
 
 export function updateArticleByArticleId(votes, id) {
-  return ncNewsApi.patch(`articles/${id}`, {
+  return ncNewsApi.patch(`/articles/${id}`, {
     inc_votes: votes,
+  });
+}
+
+export function addCommentByArticleId(id, newComment) {
+  console.log(id);
+  console.log(newComment);
+  return ncNewsApi.post(`/articles/${id}/comments`, {
+    username: "grumpy19",
+    body: newComment,
   });
 }
