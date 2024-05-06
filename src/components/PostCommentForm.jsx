@@ -8,7 +8,6 @@ function PostCommentForm({ id, setComments }) {
     addCommentByArticleId(id, newComment)
       .then((response) => {
         setComments((currComments) => {
-          console.log(currComments);
           return [response.data.comment, ...currComments];
         });
       })
