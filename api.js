@@ -25,3 +25,9 @@ export function updateVoteByCommentId(votes, id) {
     inc_votes: votes,
   });
 }
+
+export function updateArticleByArticleId(votes, id) {
+  return ncNewsApi.patch(`articles/${id}`, {
+    inc_votes: votes,
+  });
+}
