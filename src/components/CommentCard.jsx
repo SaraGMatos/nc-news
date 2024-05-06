@@ -1,21 +1,30 @@
 import { useState } from "react";
 import { updateVoteByCommentId } from "../../api";
+import ErrorAlert from "./ErrorAlert";
 
 function CommentCard({ comment }) {
   const [voteCount, updateVoteCount] = useState(comment.votes);
   const [voteUpdate, setVoteUpdate] = useState(0);
+  const [error, setError] = useState(null);
 
   function handleVote(vote) {
     updateVoteByCommentId(vote, comment.comment_id)
       .then((response) => {
         updateVoteCount(response.data.comment.votes);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        setError({ error });
+      });
 
     setVoteUpdate((currVoteUpdate) => {
       return vote + currVoteUpdate;
     });
   }
+
+  if (error) {
+    return <ErrorAlert message={"Something went wrong. Please try again"} />;
+  }
+
   return (
     <section className="comment-card-container">
       <div className="comment-card-header">

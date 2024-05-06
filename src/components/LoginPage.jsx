@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SubmissionAlert from "./SubmissionAlert";
+import ErrorAlert from "./ErrorAlert";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../contexts/User";
@@ -54,7 +54,11 @@ function LoginPage() {
 
         <button>Login</button>
       </form>
-      {showError && <SubmissionAlert />}
+      {showError && (
+        <ErrorAlert
+          message={"Incorrect password or username. Please try again!"}
+        />
+      )}
     </div>
   );
 }
