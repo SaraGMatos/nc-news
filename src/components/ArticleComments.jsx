@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import { fetchCommentsById } from "../../api";
 import CommentCard from "./CommentCard";
-import { addCommentByArticleId } from "../../api";
-import { Link } from "react-router-dom";
+import PostCommentForm from "./PostCommentForm";
 
 function ArticleComments({ id }) {
   const [comments, setComments] = useState([]);
-  const [currentComment, setCurrentComment] = useState("");
 
   function getCommentsById() {
     fetchCommentsById(id).then((commentsData) => {
@@ -15,19 +13,7 @@ function ArticleComments({ id }) {
     });
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    addCommentByArticleId(id, currentComment)
-      .then((response) => {
-        setComments((currComments) => [response, ...currComments]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  useEffect(getCommentsById, [comments]);
+  useEffect(getCommentsById, [comments.length]);
 
   return (
     <section className="comments-section">
@@ -40,21 +26,7 @@ function ArticleComments({ id }) {
           );
         })}
       </ul>
-      <form
-        className="form-container"
-        name="form-container"
-        onSubmit={handleSubmit}
-      >
-        <label htmlFor="form-container">Add a comment</label>
-        <textarea
-          value={currentComment}
-          placeholder="be nice!"
-          onChange={(event) => {
-            setCurrentComment(event.target.value);
-          }}
-        ></textarea>
-        <button className="submit-button">Post</button>
-      </form>
+      <PostCommentForm id={id} setComments={setComments} />
     </section>
   );
 }
