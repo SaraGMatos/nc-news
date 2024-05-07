@@ -12,7 +12,7 @@ function ArticleComments({ id }) {
       setComments(commentsInfo);
     });
   }
-  useEffect(getCommentsById, [id]);
+  useEffect(getCommentsById, [id, comments.length]);
 
   return (
     <section className="comments-section">
@@ -20,7 +20,11 @@ function ArticleComments({ id }) {
         {comments.map((comment) => {
           return (
             <li key={comment.comment_id}>
-              <CommentCard comment={comment} />
+              <CommentCard
+                setComments={setComments}
+                comment={comment}
+                articleId={id}
+              />
             </li>
           );
         })}

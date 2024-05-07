@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { updateVoteByCommentId } from "../../api";
+import { deleteCommentById } from "../../api";
 import ErrorAlert from "./ErrorAlert";
+import { useNavigate } from "react-router-dom";
 
-function CommentCard({ comment }) {
+function CommentCard({ setComments, comment, articleId }) {
   const [voteCount, updateVoteCount] = useState(comment.votes);
   const [voteUpdate, setVoteUpdate] = useState(0);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   function handleVote(vote) {
     updateVoteByCommentId(vote, comment.comment_id)
@@ -18,6 +21,18 @@ function CommentCard({ comment }) {
 
     setVoteUpdate((currVoteUpdate) => {
       return vote + currVoteUpdate;
+    });
+  }
+
+  function handleDelete() {
+    deleteCommentById(comment.comment_id).then(() => {
+      setComments((currComments) =>
+        currComments.filter(
+          (comment) => comment.comment_id !== comment.comment_id
+        )
+      );
+      navigate(`/articles/${articleId}`);
+      alert(`You deleted your comment!`);
     });
   }
 
@@ -34,7 +49,9 @@ function CommentCard({ comment }) {
       <div className="comment-card-middle-section">
         <p className="comment-card-body">{comment.body}</p>
         {comment.author === "grumpy19" ? (
-          <button className="comment-card-delete">Delete</button>
+          <button className="comment-card-delete" onClick={handleDelete}>
+            Delete
+          </button>
         ) : null}
       </div>
       <div className="comment-votes">
