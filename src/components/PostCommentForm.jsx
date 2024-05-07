@@ -1,16 +1,13 @@
 import { addCommentByArticleId } from "../../api";
 import { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../contexts/User";
 
 function PostCommentForm({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { user } = useContext(UserContext);
 
   function handleSubmit(event) {
     setIsLoading(true);
-    addCommentByArticleId(id, newComment, user)
+    addCommentByArticleId(id, newComment)
       .then((response) => {
         alert(`You posted your comment!`);
         setComments((currComments) => {
