@@ -276,9 +276,23 @@
     padding: 15px;
   }
 
+  .comment-card-middle-section {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .comment-card-body {
     padding: 10px;
     text-align: start;
+    margin-right: 15px;
+  }
+
+  .comment-card-delete {
+    height: 30px;
+    padding: 10px;
+    border: solid blue;
+    border-radius: 5px;
+    line-height: 0.5;
   }
 
   .comment-card-header {

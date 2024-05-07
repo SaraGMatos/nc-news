@@ -31,7 +31,12 @@ function CommentCard({ comment }) {
         <h2>{comment.author}</h2>
         <h3>{moment(comment.created_at).format("DD MMM YYYY")}</h3>
       </div>
-      <p className="comment-card-body">{comment.body}</p>
+      <div className="comment-card-middle-section">
+        <p className="comment-card-body">{comment.body}</p>
+        {comment.author === "grumpy19" ? (
+          <button className="comment-card-delete">Delete</button>
+        ) : null}
+      </div>
       <div className="comment-votes">
         <button
           className="comment-vote-button"

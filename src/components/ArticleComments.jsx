@@ -12,8 +12,7 @@ function ArticleComments({ id }) {
       setComments(commentsInfo);
     });
   }
-
-  useEffect(getCommentsById, [comments.length]);
+  useEffect(getCommentsById, [id]);
 
   return (
     <section className="comments-section">
