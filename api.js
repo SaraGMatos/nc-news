@@ -38,3 +38,7 @@ export function addCommentByArticleId(id, newComment, user) {
     body: newComment,
   });
 }
+
+export function deleteCommentById(id) {
+  return ncNewsApi.delete(`/comments/${id}`);
+}
