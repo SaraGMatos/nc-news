@@ -16,6 +16,7 @@ function SingleArticle() {
   const { id } = useParams();
   const [voteUpdate, setVoteUpdate] = useState(0);
   const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   function getArticleById() {
     fetchArticleById(id)
@@ -30,10 +31,12 @@ function SingleArticle() {
   useEffect(getArticleById, [id]);
 
   function handleVote(vote) {
+    setIsLoading(true);
     updateArticleByArticleId(vote, id).then(() => {
       setVoteUpdate((currVoteUpdate) => {
         return vote + currVoteUpdate;
       });
+      setIsLoading(false);
     });
   }
 
@@ -59,6 +62,11 @@ function SingleArticle() {
         >
           -
         </button>
+        {isLoading && (
+          <h2 className="loading-text">
+            Your vote is on its way, please wait...
+          </h2>
+        )}
       </div>
       {error && (
         <ErrorAlert message={"Something went wrong. Please try again!"} />

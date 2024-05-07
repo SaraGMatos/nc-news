@@ -5,15 +5,18 @@ import { UserContext } from "../contexts/User";
 
 function PostCommentForm({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { user } = useContext(UserContext);
 
   function handleSubmit(event) {
+    setIsLoading(true);
     addCommentByArticleId(id, newComment, user)
       .then((response) => {
         alert(`You posted your comment!`);
         setComments((currComments) => {
           return [response.data.comment, ...currComments];
         });
+        setIsLoading(false);
       })
       .catch((error) => {
         alert(`Oopsie, there's been an error. Try again please.`);
@@ -39,6 +42,11 @@ function PostCommentForm({ id, setComments }) {
         }}
       ></textarea>
       <button className="submit-button">Post</button>
+      {isLoading && (
+        <h2 className="loading-text">
+          Your post is on its way, please wait...
+        </h2>
+      )}
     </form>
   );
 }

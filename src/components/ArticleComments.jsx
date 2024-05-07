@@ -5,15 +5,21 @@ import PostCommentForm from "./PostCommentForm";
 
 function ArticleComments({ id }) {
   const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function getCommentsById() {
+    setIsLoading(true);
     fetchCommentsById(id).then((commentsData) => {
       const commentsInfo = commentsData.data.comments;
       setComments(commentsInfo);
+      setIsLoading(false);
     });
   }
   useEffect(getCommentsById, [id, comments.length]);
 
+  if (isLoading) {
+    return <h2 className="loading-text">Comments loading, please wait...</h2>;
+  }
   return (
     <section className="comments-section">
       <ul>
