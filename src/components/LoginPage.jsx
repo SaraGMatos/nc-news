@@ -14,7 +14,7 @@ function LoginPage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (username === "saramatos" && password === "test") {
+    if (username === "grumpy19" && password === "test") {
       setShowError(false);
       setUser(username);
       navigate("/articles");

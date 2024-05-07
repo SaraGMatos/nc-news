@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCommentsById } from "../../api";
 import CommentCard from "./CommentCard";
+import PostCommentForm from "./PostCommentForm";
 
 function ArticleComments({ id }) {
   const [comments, setComments] = useState([]);
@@ -12,7 +13,7 @@ function ArticleComments({ id }) {
     });
   }
 
-  useEffect(getCommentsById, []);
+  useEffect(getCommentsById, [comments.length]);
 
   return (
     <section className="comments-section">
@@ -25,6 +26,7 @@ function ArticleComments({ id }) {
           );
         })}
       </ul>
+      <PostCommentForm id={id} setComments={setComments} />
     </section>
   );
 }
