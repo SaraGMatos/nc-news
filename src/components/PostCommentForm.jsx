@@ -1,17 +1,22 @@
 import { addCommentByArticleId } from "../../api";
 import { useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "../contexts/User";
 
 function PostCommentForm({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
+  const { user } = useContext(UserContext);
 
   function handleSubmit(event) {
-    addCommentByArticleId(id, newComment)
+    addCommentByArticleId(id, newComment, user)
       .then((response) => {
+        alert(`You posted your comment!`);
         setComments((currComments) => {
           return [response.data.comment, ...currComments];
         });
       })
       .catch((error) => {
+        alert(`Oopsie, there's been an error. Try again please.`);
         console.log(error);
       });
 

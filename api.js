@@ -32,11 +32,9 @@ export function updateArticleByArticleId(votes, id) {
   });
 }
 
-export function addCommentByArticleId(id, newComment) {
-  console.log(id);
-  console.log(newComment);
+export function addCommentByArticleId(id, newComment, user) {
   return ncNewsApi.post(`/articles/${id}/comments`, {
-    username: "grumpy19",
+    username: user,
     body: newComment,
   });
 }
