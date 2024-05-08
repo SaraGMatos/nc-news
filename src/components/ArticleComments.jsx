@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchCommentsById } from "../../api";
 import CommentCard from "./CommentCard";
 import PostCommentForm from "./PostCommentForm";
+import ErrorAlert from "./ErrorAlert";
 
 function ArticleComments({ id }) {
   const [comments, setComments] = useState([]);
@@ -23,6 +24,9 @@ function ArticleComments({ id }) {
   return (
     <section className="comments-section">
       <ul>
+        {comments.length === 0 ? (
+          <ErrorAlert message={"No comments here yet!"} />
+        ) : null}
         {comments.map((comment) => {
           return (
             <li key={comment.comment_id}>

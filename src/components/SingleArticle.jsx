@@ -28,6 +28,7 @@ function SingleArticle() {
         setError(true);
       });
   }
+
   useEffect(getArticleById, [id]);
 
   function handleVote(vote) {
@@ -43,37 +44,41 @@ function SingleArticle() {
   return (
     <>
       <Header user={user} />
-      <SingleArticleHeader article={article} />
+      {error && (
+        <h2 className="error-text">The required article does not exist.</h2>
+      )}
+      {!error && <SingleArticleHeader article={article} />}
       <img className="article-image" src={article.article_img_url} />
       <section className="article-body">{article.body}</section>
-      <div className="article-votes">
-        <button
-          className="article-vote-button"
-          disabled={voteUpdate === 1}
-          onClick={() => handleVote(1)}
-        >
-          +
-        </button>
-        <p>{String(article.votes + voteUpdate)}</p>
-        <button
-          className="article-vote-button"
-          disabled={voteUpdate === -1}
-          onClick={() => handleVote(-1)}
-        >
-          -
-        </button>
-        {isLoading && (
-          <h2 className="loading-text">
-            Your vote is on its way, please wait...
-          </h2>
-        )}
-      </div>
-      {error && (
-        <ErrorAlert message={"Something went wrong. Please try again!"} />
+      {!error && (
+        <div className="article-votes">
+          <button
+            className="article-vote-button"
+            disabled={voteUpdate === 1}
+            onClick={() => handleVote(1)}
+          >
+            +
+          </button>
+          <p>{String(article.votes + voteUpdate)}</p>
+          <button
+            className="article-vote-button"
+            disabled={voteUpdate === -1}
+            onClick={() => handleVote(-1)}
+          >
+            -
+          </button>
+          {isLoading && (
+            <h2 className="loading-text">
+              Your vote is on its way, please wait...
+            </h2>
+          )}
+        </div>
       )}
-      <Expandable id={id}>
-        <ArticleComments id={id} />
-      </Expandable>
+      {!error && (
+        <Expandable id={id}>
+          <ArticleComments id={id} />
+        </Expandable>
+      )}
     </>
   );
 }
