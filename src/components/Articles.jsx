@@ -5,15 +5,22 @@ import ArticleCard from "./ArticleCard";
 import { UserContext } from "../contexts/User";
 import TopicsSelect from "./TopicsSelect";
 import { useSearchParams } from "react-router-dom";
+import SortBySelect from "./SortBySelect";
+import OrderSelect from "./OrderSelect";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentTopic, setCurrentTopic] = useState("");
+  const [currentSortBy, setCurrentSortBy] = useState("");
+  const [currentOrder, setCurrentOrder] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [isPageLoading, setIsPageLoading] = useState(true);
+  const params = {
+    p: currentPage,
+  };
 
   function handleClickPrevious() {
     setCurrentPage(currentPage - 1);
@@ -25,21 +32,37 @@ function Articles() {
 
   function getArticles() {
     if (currentTopic) {
-      setSearchParams({ topic: currentTopic, p: currentPage });
-    } else {
-      setSearchParams({ p: currentPage });
+      params.topic = currentTopic;
+      setSearchParams(params);
     }
+    if (currentSortBy) {
+      params.sort_by = currentSortBy;
+      setSearchParams(params);
+    }
+
+    if (currentOrder) {
+      params.order = currentOrder;
+      setSearchParams(params);
+    }
+    setSearchParams(params);
 
     setIsLoading(true);
 
-    fetchArticles(currentPage, currentTopic).then((articlesData) => {
-      const articlesInfo = articlesData.data.articles.articles;
-      setArticles(articlesInfo);
-      setIsLoading(false);
-      setIsPageLoading(false);
-    });
+    fetchArticles(currentPage, currentTopic, currentSortBy, currentOrder).then(
+      (articlesData) => {
+        const articlesInfo = articlesData.data.articles.articles;
+        setArticles(articlesInfo);
+        setIsLoading(false);
+        setIsPageLoading(false);
+      }
+    );
   }
-  useEffect(getArticles, [currentPage, currentTopic]);
+  useEffect(getArticles, [
+    currentPage,
+    currentTopic,
+    currentSortBy,
+    currentOrder,
+  ]);
 
   if (isPageLoading) {
     return <h2 className="loading-text">Page loading, please wait...</h2>;
@@ -48,11 +71,20 @@ function Articles() {
   return (
     <div>
       <Header user={user} />
-      <TopicsSelect
-        className="topics-select"
-        setCurrentPage={setCurrentPage}
-        setCurrentTopic={setCurrentTopic}
-      />
+      <div className="sorting-options">
+        <TopicsSelect
+          setCurrentPage={setCurrentPage}
+          setCurrentTopic={setCurrentTopic}
+        />
+        <SortBySelect
+          setCurrentPage={setCurrentPage}
+          setCurrentSortBy={setCurrentSortBy}
+        />
+        <OrderSelect
+          setCurrentPage={setCurrentPage}
+          setCurrentOrder={setCurrentOrder}
+        />
+      </div>
       <div className="articles-container">
         <h2>ARTICLES</h2>
         {isLoading ? (

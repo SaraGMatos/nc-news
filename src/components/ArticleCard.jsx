@@ -18,6 +18,9 @@ function ArticleCard({ article }) {
               ? article.title
               : article.title.slice(0, 56) + "..."}
           </h3>
+          <p className="article-date">
+            {moment(article.created_at).format("DD MMM YYYY")}
+          </p>
         </div>
       </div>
     </Link>
