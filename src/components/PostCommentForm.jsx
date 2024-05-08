@@ -4,6 +4,7 @@ import { useState } from "react";
 function PostCommentForm({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   function handleSubmit(event) {
     setIsLoading(true);
@@ -16,8 +17,8 @@ function PostCommentForm({ id, setComments }) {
         setIsLoading(false);
       })
       .catch((error) => {
-        alert(`Oopsie, there's been an error. Try again please.`);
-        console.log(error);
+        setIsLoading(false);
+        setError(true);
       });
 
     setNewComment("");
@@ -38,6 +39,7 @@ function PostCommentForm({ id, setComments }) {
           setNewComment(event.target.value);
         }}
       ></textarea>
+      {error && <h2 className="error-text">Please write something!</h2>}
       <button className="submit-button">Post</button>
       {isLoading && (
         <h2 className="loading-text">
