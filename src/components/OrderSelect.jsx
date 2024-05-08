@@ -9,10 +9,11 @@ function OrderSelect({ setCurrentPage, setCurrentOrder }) {
           setCurrentPage(1);
         }}
       >
-        <option value="Blank">Default</option>
+        <option value="">Select</option>
         <option value="asc">Asc</option>
         <option value="desc">Desc</option>
       </select>
+      <p>Default: Desc</p>
     </div>
   );
 }

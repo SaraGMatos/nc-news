@@ -9,11 +9,12 @@ function TopicsSelect({ setCurrentPage, setCurrentTopic }) {
           setCurrentPage(1);
         }}
       >
-        <option value="Blank">All</option>
+        <option value="">Select</option>
         <option value="cooking">Cooking</option>
         <option value="coding">Coding</option>
         <option value="football">Football</option>
       </select>
+      <p>Default: All</p>
     </div>
   );
 }

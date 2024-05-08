@@ -9,11 +9,12 @@ function SortBySelect({ setCurrentPage, setCurrentSortBy }) {
           setCurrentPage(1);
         }}
       >
-        <option value="Blank">Default</option>
+        <option value="">Select</option>
         <option value="created_at">Date</option>
         <option value="comment_count">Comment count</option>
         <option value="votes">Vote count</option>
       </select>
+      <p>Default: Date</p>
     </div>
   );
 }
