@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { fetchArticles } from "../../api";
 import Header from "./Header";
 import ArticleCard from "./ArticleCard";
-import { useContext } from "react";
 import { UserContext } from "../contexts/User";
-import { Link } from "react-router-dom";
 import TopicsSelect from "./TopicsSelect";
 import { useSearchParams } from "react-router-dom";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentTopic, setCurrentTopic] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
-  const topic = searchParams.get("topic");
   const { user } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(articles);
+  const [isPageLoading, setIsPageLoading] = useState(true);
 
   function handleClickPrevious() {
     setCurrentPage(currentPage - 1);
@@ -26,25 +24,41 @@ function Articles() {
   }
 
   function getArticles() {
+    if (currentTopic) {
+      setSearchParams({ topic: currentTopic, p: currentPage });
+    } else {
+      setSearchParams({ p: currentPage });
+    }
+
     setIsLoading(true);
-    fetchArticles(currentPage, topic).then((articlesData) => {
+
+    fetchArticles(currentPage, currentTopic).then((articlesData) => {
       const articlesInfo = articlesData.data.articles.articles;
       setArticles(articlesInfo);
       setIsLoading(false);
+      setIsPageLoading(false);
     });
   }
-  useEffect(getArticles, [currentPage, topic]);
+  useEffect(getArticles, [currentPage, currentTopic]);
 
-  if (isLoading) {
+  if (isPageLoading) {
     return <h2 className="loading-text">Page loading, please wait...</h2>;
   }
 
   return (
     <div>
       <Header user={user} />
-      <TopicsSelect setSearchParams={setSearchParams} />
+      <TopicsSelect
+        className="topics-select"
+        setCurrentPage={setCurrentPage}
+        setCurrentTopic={setCurrentTopic}
+      />
       <div className="articles-container">
         <h2>ARTICLES</h2>
+        {isLoading ? (
+          <h2 className="loading-text">Articles loading, please wait...</h2>
+        ) : null}
+
         <ul>
           {articles.map((article) => {
             return (
@@ -55,24 +69,21 @@ function Articles() {
           })}
         </ul>
         <div className="button-container">
-          <Link to={`/articles?p=${currentPage - 1}`}>
-            <button
-              className="articles-button"
-              disabled={currentPage === 1}
-              onClick={handleClickPrevious}
-            >
-              Previous
-            </button>
-          </Link>
-          <Link to={`/articles?p=${currentPage + 1}`}>
-            <button
-              className="articles-button"
-              disabled={articles.length < 10}
-              onClick={handleClickNext}
-            >
-              Next
-            </button>
-          </Link>
+          <button
+            className="articles-button"
+            disabled={currentPage === 1}
+            onClick={handleClickPrevious}
+          >
+            Previous
+          </button>
+
+          <button
+            className="articles-button"
+            disabled={articles.length < 10}
+            onClick={handleClickNext}
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>

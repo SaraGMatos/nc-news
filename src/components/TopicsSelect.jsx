@@ -1,19 +1,20 @@
-function TopicsSelect({ setSearchParams }) {
+function TopicsSelect({ setCurrentPage, setCurrentTopic }) {
   return (
-    <>
+    <div className="topics-select">
       <label htmlFor="topics">Choose a topic:</label>
       <select
         name="topics"
         onChange={(event) => {
-          setSearchParams(event.target.value);
+          setCurrentTopic(event.target.value);
+          setCurrentPage(1);
         }}
       >
         <option value="Blank"></option>
-        <option value="topic=cooking">Cooking</option>
-        <option value="topic=coding">Coding</option>
-        <option value="topic=football">Football</option>
+        <option value="cooking">Cooking</option>
+        <option value="coding">Coding</option>
+        <option value="football">Football</option>
       </select>
-    </>
+    </div>
   );
 }
 

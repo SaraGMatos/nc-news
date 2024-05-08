@@ -135,6 +135,20 @@
     margin: 20px;
   }
 
+  .topics-select {
+    margin: 15px 20px;
+    width: 30%;
+    font-size: small;
+    font-weight: bold;
+  }
+
+  .topics-select select {
+    border: solid blueviolet;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+  }
+
   /*! ARTICLE CARD */
 
   .articles-container {
@@ -377,6 +391,17 @@
 
 /*? LARGER SCREENS */
 
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+}
+
 body {
   width: 100%;
   height: 100%;
@@ -442,7 +467,6 @@ body {
   align-self: center;
   font-weight: bold;
   padding: 5px;
-
   background-color: rgb(238, 244, 246);
 }
 
@@ -453,6 +477,8 @@ body {
 /*! HEADER */
 
 .page-header {
+  width: 100%;
+  margin: 0;
   display: flex;
   justify-content: space-around;
   border-bottom: solid blue;
@@ -482,6 +508,7 @@ body {
   border-radius: 5px;
   height: 50%;
   padding: 10px 15px;
+  min-width: 100px;
   width: 20%;
   line-height: 1;
 }
@@ -629,6 +656,11 @@ body {
 
 /*! COMMENT CARD */
 
+.comments-section {
+  display: flex;
+  flex-direction: column;
+}
+
 .comment-card-container {
   border: solid black;
   border-radius: 5px;
@@ -636,9 +668,23 @@ body {
   padding: 15px;
 }
 
+.comment-card-middle-section {
+  display: flex;
+  justify-content: space-between;
+}
+
 .comment-card-body {
   padding: 10px;
   text-align: start;
+  margin-right: 15px;
+}
+
+.comment-card-delete {
+  height: 30px;
+  padding: 10px;
+  border: solid blue;
+  border-radius: 5px;
+  line-height: 0.5;
 }
 
 .comment-card-header {
@@ -676,5 +722,44 @@ body {
 }
 
 .comment-votes button:hover {
+  box-shadow: 5px 10px rgb(142, 142, 218);
+}
+
+/*! COMMENT POST FORM */
+
+.form-container {
+  width: 92%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  border: solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container textarea {
+  width: 100%;
+  height: 60px;
+  margin: 15px 0;
+  border: solid blueviolet;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.form-container button {
+  align-self: center;
+  border: solid blue;
+  border-radius: 5px;
+  padding: 10px;
+  width: 80px;
+  line-height: 1;
+  margin: 15px;
+}
+
+.form-container button:hover {
   box-shadow: 5px 10px rgb(142, 142, 218);
 }
