@@ -135,17 +135,56 @@
     margin: 20px;
   }
 
+  .sorting-options {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .topics-select {
-    margin: 15px 20px;
+    margin-top: 10px;
     width: 30%;
     font-size: small;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
   }
 
   .topics-select select {
     border: solid blueviolet;
     border-radius: 5px;
-    margin: 5px;
+    /* margin: 5px; */
+    padding: 5px;
+  }
+
+  .sort-by-select {
+    margin-top: 10px;
+    width: 30%;
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sort-by-select select {
+    border: solid blueviolet;
+    border-radius: 5px;
+    /* margin: 5px; */
+    padding: 5px;
+  }
+
+  .order-select {
+    margin-top: 10px;
+    width: 30%;
+    font-size: small;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .order-select select {
+    border: solid blueviolet;
+    border-radius: 5px;
+    /* margin: 5px; */
     padding: 5px;
   }
 
@@ -192,6 +231,11 @@
   .article-card h3 {
     font-size: large;
     font-weight: bold;
+    margin: 10px 0;
+  }
+
+  .article-date {
+    align-self: flex-end;
   }
 
   .button-container {
@@ -391,17 +435,6 @@
 
 /*? LARGER SCREENS */
 
-* {
-  box-sizing: border-box;
-}
-
-#root {
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  height: 100%;
-}
-
 body {
   width: 100%;
   height: 100%;
@@ -527,6 +560,53 @@ body {
   margin: 20px;
 }
 
+.sorting-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topics-select {
+  margin-top: 10px;
+  width: 30%;
+  font-size: small;
+  font-weight: bold;
+}
+
+.topics-select select {
+  border: solid blueviolet;
+  border-radius: 5px;
+  /* margin: 5px; */
+  padding: 5px;
+}
+
+.sort-by-select {
+  margin-top: 10px;
+  width: 30%;
+  font-size: small;
+  font-weight: bold;
+}
+
+.sort-by-select select {
+  border: solid blueviolet;
+  border-radius: 5px;
+  /* margin: 5px; */
+  padding: 5px;
+}
+
+.order-select {
+  margin-top: 10px;
+  width: 30%;
+  font-size: small;
+  font-weight: bold;
+}
+
+.order-select select {
+  border: solid blueviolet;
+  border-radius: 5px;
+  /* margin: 5px; */
+  padding: 5px;
+}
+
 /*! ARTICLE CARD */
 
 .articles-container {
@@ -570,6 +650,11 @@ body {
 .article-card h3 {
   font-size: large;
   font-weight: bold;
+  margin: 10px 0;
+}
+
+.article-date {
+  align-self: flex-end;
 }
 
 .button-container {
