@@ -152,7 +152,6 @@
   .topics-select select {
     border: solid blueviolet;
     border-radius: 5px;
-    /* margin: 5px; */
     padding: 5px;
   }
 
@@ -168,7 +167,6 @@
   .sort-by-select select {
     border: solid blueviolet;
     border-radius: 5px;
-    /* margin: 5px; */
     padding: 5px;
   }
 
@@ -184,7 +182,6 @@
   .order-select select {
     border: solid blueviolet;
     border-radius: 5px;
-    /* margin: 5px; */
     padding: 5px;
   }
 
@@ -570,12 +567,13 @@ body {
   width: 30%;
   font-size: small;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .topics-select select {
   border: solid blueviolet;
   border-radius: 5px;
-  /* margin: 5px; */
   padding: 5px;
 }
 
@@ -584,12 +582,13 @@ body {
   width: 30%;
   font-size: small;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .sort-by-select select {
   border: solid blueviolet;
   border-radius: 5px;
-  /* margin: 5px; */
   padding: 5px;
 }
 
@@ -598,6 +597,8 @@ body {
   width: 30%;
   font-size: small;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
 }
 
 .order-select select {
