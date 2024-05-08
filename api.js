@@ -4,11 +4,21 @@ const ncNewsApi = axios.create({
   baseURL: "https://nc-news-app-jnwm.onrender.com/api",
 });
 
-export function fetchArticles(currentPage, topic) {
+export function fetchArticles(
+  currentPage,
+  currentTopic,
+  currentSortBy,
+  currentOrder
+) {
+  console.log(currentTopic);
+  console.log(currentSortBy);
+  console.log(currentOrder);
   return ncNewsApi.get("/articles", {
     params: {
-      p: `${currentPage}`,
-      topic: topic,
+      p: currentPage,
+      topic: currentTopic,
+      sort_by: currentSortBy || null,
+      order: currentOrder || null,
     },
   });
 }
