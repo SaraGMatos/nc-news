@@ -2,7 +2,6 @@ import { useState } from "react";
 import { updateVoteByCommentId } from "../../api";
 import { deleteCommentById } from "../../api";
 import ErrorAlert from "./ErrorAlert";
-import { useNavigate } from "react-router-dom";
 
 function CommentCard({ setComments, comment, articleId }) {
   const [voteCount, updateVoteCount] = useState(comment.votes);
@@ -10,7 +9,6 @@ function CommentCard({ setComments, comment, articleId }) {
   const [error, setError] = useState(null);
   const [isVoteLoading, setIsVoteLoading] = useState(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
-  const navigate = useNavigate();
 
   function handleVote(vote) {
     setIsVoteLoading(true);
@@ -37,8 +35,6 @@ function CommentCard({ setComments, comment, articleId }) {
         )
       );
       setIsDeleteLoading(false);
-      navigate(`/articles/${articleId}`);
-      alert(`You deleted your comment!`);
     });
   }
 
@@ -49,19 +45,21 @@ function CommentCard({ setComments, comment, articleId }) {
   return (
     <section className="comment-card-container">
       <div className="comment-card-header">
-        <h2>{comment.author}</h2>
-        <h3>{moment(comment.created_at).format("DD MMM YYYY")}</h3>
+        <h2 id="comment-author">{comment.author}</h2>
+        <h3 id="comment-date">
+          {moment(comment.created_at).format("DD MMM YYYY")}
+        </h3>
       </div>
       <div className="comment-card-middle-section">
         <p className="comment-card-body">{comment.body}</p>
         {comment.author === "grumpy19" ? (
           <button className="comment-card-delete" onClick={handleDelete}>
-            Delete
+            <i class="fa-solid fa-trash"></i>
           </button>
         ) : null}
       </div>
       {isDeleteLoading ? (
-        <h2 className="loading-text">We're deleting your comment...</h2>
+        <h2 className="delete-text">We're deleting your comment...</h2>
       ) : null}
       <div className="comment-votes">
         <button
@@ -81,9 +79,7 @@ function CommentCard({ setComments, comment, articleId }) {
         </button>
       </div>
       {isVoteLoading ? (
-        <h2 className="loading-text">
-          Your vote is on its way, please wait...
-        </h2>
+        <h2 className="vote-text">Your vote is on its way, please wait...</h2>
       ) : null}
     </section>
   );

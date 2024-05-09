@@ -4,7 +4,7 @@ import CommentCard from "./CommentCard";
 import PostCommentForm from "./PostCommentForm";
 import ErrorAlert from "./ErrorAlert";
 
-function ArticleComments({ id }) {
+function ArticleComments({ id, article }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,14 +19,18 @@ function ArticleComments({ id }) {
   useEffect(getCommentsById, [id, comments.length]);
 
   if (isLoading) {
-    return <h2 className="loading-text">Comments loading, please wait...</h2>;
+    return (
+      <h2 className="comment-loading-text">Comments loading, please wait...</h2>
+    );
   }
   return (
     <section className="comments-section">
+      {comments.length === 0 ? (
+        <ErrorAlert message={"No comments here yet!"} />
+      ) : null}
+      <PostCommentForm id={id} setComments={setComments} />
+      <p className="comment-count">{`${article.comment_count} comments`}</p>
       <ul>
-        {comments.length === 0 ? (
-          <ErrorAlert message={"No comments here yet!"} />
-        ) : null}
         {comments.map((comment) => {
           return (
             <li key={comment.comment_id}>
@@ -39,7 +43,6 @@ function ArticleComments({ id }) {
           );
         })}
       </ul>
-      <PostCommentForm id={id} setComments={setComments} />
     </section>
   );
 }

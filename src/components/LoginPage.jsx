@@ -59,6 +59,10 @@ function LoginPage() {
           message={"Incorrect password or username. Please try again!"}
         />
       )}
+      <div className="login-hint">
+        <p>Username: grumpy19</p>
+        <p>Password: test</p>
+      </div>
     </div>
   );
 }

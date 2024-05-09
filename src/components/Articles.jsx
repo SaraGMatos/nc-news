@@ -31,6 +31,8 @@ function Articles() {
   }
 
   function getArticles() {
+    window.scrollTo(0, 0);
+
     if (currentTopic) {
       params.topic = currentTopic;
       setSearchParams(params);
@@ -71,51 +73,52 @@ function Articles() {
   return (
     <div>
       <Header user={user} />
-      <div className="sorting-options">
-        <TopicsSelect
-          setCurrentPage={setCurrentPage}
-          setCurrentTopic={setCurrentTopic}
-        />
-        <SortBySelect
-          setCurrentPage={setCurrentPage}
-          setCurrentSortBy={setCurrentSortBy}
-        />
-        <OrderSelect
-          setCurrentPage={setCurrentPage}
-          setCurrentOrder={setCurrentOrder}
-        />
-      </div>
       <div className="articles-container">
-        <h2>ARTICLES</h2>
-        {isLoading ? (
-          <h2 className="loading-text">Articles loading, please wait...</h2>
-        ) : null}
+        <div className="sorting-options">
+          <TopicsSelect
+            setCurrentPage={setCurrentPage}
+            setCurrentTopic={setCurrentTopic}
+          />
+          <SortBySelect
+            setCurrentPage={setCurrentPage}
+            setCurrentSortBy={setCurrentSortBy}
+          />
+          <OrderSelect
+            setCurrentPage={setCurrentPage}
+            setCurrentOrder={setCurrentOrder}
+          />
+        </div>
+        <div className="articles-list">
+          {isLoading ? (
+            <h2 className="loading-text">Articles loading, please wait...</h2>
+          ) : null}
 
-        <ul>
-          {articles.map((article) => {
-            return (
-              <li key={article.article_id}>
-                <ArticleCard article={article} />
-              </li>
-            );
-          })}
-        </ul>
-        <div className="button-container">
-          <button
-            className="articles-button"
-            disabled={currentPage === 1}
-            onClick={handleClickPrevious}
-          >
-            Previous
-          </button>
+          <ul>
+            {articles.map((article) => {
+              return (
+                <li key={article.article_id}>
+                  <ArticleCard article={article} />
+                </li>
+              );
+            })}
+          </ul>
+          <div className="button-container">
+            <button
+              className="articles-button"
+              disabled={currentPage === 1}
+              onClick={handleClickPrevious}
+            >
+              Previous
+            </button>
 
-          <button
-            className="articles-button"
-            disabled={articles.length < 10}
-            onClick={handleClickNext}
-          >
-            Next
-          </button>
+            <button
+              className="articles-button"
+              disabled={articles.length < 10}
+              onClick={handleClickNext}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>

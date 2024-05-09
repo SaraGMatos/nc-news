@@ -10,7 +10,7 @@ function Expandable({ children }) {
   return (
     <>
       <button className="expandable-button" onClick={toggleHidden}>
-        {isHidden ? "View comments" : "Hide comments"}
+        {isHidden ? `View comments` : `Hide comments`}
       </button>
       {!isHidden && children}
     </>

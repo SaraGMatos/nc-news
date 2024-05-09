@@ -1,5 +1,5 @@
 import { addCommentByArticleId } from "../../api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function PostCommentForm({ id, setComments }) {
   const [newComment, setNewComment] = useState("");
@@ -7,10 +7,10 @@ function PostCommentForm({ id, setComments }) {
   const [error, setError] = useState(false);
 
   function handleSubmit(event) {
+    event.preventDefault();
     setIsLoading(true);
     addCommentByArticleId(id, newComment)
       .then((response) => {
-        alert(`You posted your comment!`);
         setComments((currComments) => {
           return [response.data.comment, ...currComments];
         });
@@ -22,7 +22,6 @@ function PostCommentForm({ id, setComments }) {
       });
 
     setNewComment("");
-    event.preventDefault();
   }
 
   return (

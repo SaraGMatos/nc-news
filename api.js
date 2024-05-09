@@ -8,11 +8,9 @@ export function fetchArticles(
   currentPage,
   currentTopic,
   currentSortBy,
-  currentOrder
+  currentOrder,
+  limit
 ) {
-  console.log(currentTopic);
-  console.log(currentSortBy);
-  console.log(currentOrder);
   return ncNewsApi.get("/articles", {
     params: {
       p: currentPage,

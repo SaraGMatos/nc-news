@@ -10,8 +10,8 @@ function ArticleCard({ article }) {
 
         <div className="article-card-content">
           <div className="article-card-topic-author">
-            <p>{article.topic}</p>
-            <p>{article.author}</p>
+            <p id="topic">{article.topic}</p>
+            <p id="author">{article.author}</p>
           </div>
           <h3>
             {article.title.length < 56

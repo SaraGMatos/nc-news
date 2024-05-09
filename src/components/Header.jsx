@@ -10,10 +10,9 @@ function Header({ user }) {
     <header className="page-header">
       <div className="header-content">
         <h1>NC NEWS</h1>
-        <p>Hello {user}!</p>
       </div>
       <button className="header-button" onClick={navigateToLogin}>
-        Log out
+        <i className="fa-solid fa-arrow-right-from-bracket"></i>
       </button>
     </header>
   );

@@ -8,7 +8,6 @@ import { UserContext } from "../contexts/User";
 import Expandable from "./Expandable";
 import ArticleComments from "./ArticleComments";
 import { updateArticleByArticleId } from "../../api";
-import ErrorAlert from "./ErrorAlert";
 
 function SingleArticle() {
   const [article, setArticle] = useState({});
@@ -42,44 +41,55 @@ function SingleArticle() {
   }
 
   return (
-    <>
+    <div>
       <Header user={user} />
       {error && (
-        <h2 className="error-text">The required article does not exist.</h2>
-      )}
-      {!error && <SingleArticleHeader article={article} />}
-      <img className="article-image" src={article.article_img_url} />
-      <section className="article-body">{article.body}</section>
-      {!error && (
-        <div className="article-votes">
-          <button
-            className="article-vote-button"
-            disabled={voteUpdate === 1}
-            onClick={() => handleVote(1)}
-          >
-            +
-          </button>
-          <p>{String(article.votes + voteUpdate)}</p>
-          <button
-            className="article-vote-button"
-            disabled={voteUpdate === -1}
-            onClick={() => handleVote(-1)}
-          >
-            -
-          </button>
-          {isLoading && (
-            <h2 className="loading-text">
-              Your vote is on its way, please wait...
-            </h2>
-          )}
+        <div className="error-container">
+          <h2 className="error-text">The required article does not exist.</h2>
         </div>
       )}
-      {!error && (
-        <Expandable id={id}>
-          <ArticleComments id={id} />
-        </Expandable>
-      )}
-    </>
+      <div>
+        {!error && <SingleArticleHeader article={article} />}
+        <div className="single-article-container">
+          <div className="article-image">
+            <img src={article.article_img_url} />
+          </div>
+
+          <section className="article-body">{article.body}</section>
+          {!error && (
+            <div className="article-votes">
+              <button
+                className="article-vote-button"
+                disabled={voteUpdate === 1}
+                onClick={() => handleVote(1)}
+              >
+                +
+              </button>
+              <p>{String(article.votes + voteUpdate)}</p>
+              <button
+                className="article-vote-button"
+                disabled={voteUpdate === -1}
+                onClick={() => handleVote(-1)}
+              >
+                -
+              </button>
+            </div>
+          )}
+          <div>
+            {isLoading && (
+              <h2 className="vote-text">
+                Your vote is on its way, please wait...
+              </h2>
+            )}
+          </div>
+          {!error && (
+            <Expandable id={id}>
+              <ArticleComments id={id} article={article} />
+            </Expandable>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
 
