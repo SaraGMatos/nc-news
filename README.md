@@ -22,6 +22,8 @@ Would you like to have a look at the Netlify hosted version? Have a peek [here](
 
 5. Now you should be ready to run it locally using [Vite]("https://vitejs.dev/guide/why.html) as a dev server. Please paste the following: `npm run dev` and click on the `http://localhost:5173/` that will appear on your terminal!
 
+6. There is a mock login page. Please be aware that you will need to be logged in as _grumpy19_. The password is, as it irremediably needs to be at this state, _test_. 
+
 ## Contributions
 
 This project is open to contributions. Feel free to submit a pull request if you would like to make a suggestion or raise an issue or problem with the code.
