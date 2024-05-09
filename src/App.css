@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  height: 100%;
+  height: 100vh;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif, "Montserrat Subrayada", Helvetica,
     "Limelight", sans-serif;
@@ -16,7 +16,6 @@
 
 body {
   width: 100%;
-  height: 100%;
 }
 
 /*! LOGIN PAGE */
@@ -28,7 +27,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   justify-content: space-evenly;
-  height: 100%;
+  height: 100vh;
 }
 
 .login-page h1 {
@@ -94,20 +93,22 @@ body {
   box-shadow: 5px 10px rgb(61, 64, 91);
 }
 
+.login-hint {
+  color: white;
+}
+
 /*! HEADER */
 
 .page-header {
   width: 100%;
   margin: 0;
+  padding: 30px 30px;
   display: flex;
-  justify-content: space-around;
-  border-bottom: solid blue;
-  border-bottom-width: 5px;
-  height: 15%;
+  justify-content: space-between;
+  border-bottom: double rgb(224, 122, 95) 10px;
 
-  padding: 20px;
-
-  background-color: rgb(218, 238, 245);
+  color: rgb(244, 241, 222);
+  background-color: rgb(61, 64, 91);
 }
 
 .header-content {
@@ -119,29 +120,29 @@ body {
 
 .header-content h1 {
   font-family: "Montserrat Subrayada", sans-serif;
-  font-size: xx-large;
+  font-size: 3em;
   font-weight: bolder;
 }
 
 .header-button {
+  display: flex;
   align-self: center;
-  border: solid blue;
-  border-radius: 5px;
+  border: solid rgb(224, 122, 95) 2px;
+  border-radius: 10px;
   height: 50%;
   padding: 10px 15px;
-  min-width: 100px;
-  width: 20%;
-  line-height: 1;
 }
 
 .header-button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(242, 204, 143);
 }
 
 /*! ARTICLES */
 
 .articles-container {
-  margin: 20px;
+  margin: 0px;
+  width: 100%;
+  background-color: rgb(129, 178, 154);
 }
 
 .articles-container h2 {
@@ -150,7 +151,9 @@ body {
 
 .sorting-options {
   display: flex;
+  margin: 0 20px;
   justify-content: space-between;
+  background-color: rgb(129, 178, 154);
 }
 
 .topics-select {
@@ -162,8 +165,14 @@ body {
   flex-direction: column;
 }
 
+.articles-container label {
+  color: rgb(44, 46, 65);
+  font-size: large;
+}
+
 .topics-select select {
-  border: solid blueviolet;
+  background: rgb(244, 241, 222);
+  border: solid rgb(224, 122, 95);
   border-radius: 5px;
   padding: 5px;
 }
@@ -178,7 +187,8 @@ body {
 }
 
 .sort-by-select select {
-  border: solid blueviolet;
+  background: rgb(244, 241, 222);
+  border: solid rgb(224, 122, 95);
   border-radius: 5px;
   padding: 5px;
 }
@@ -193,36 +203,57 @@ body {
 }
 
 .order-select select {
-  border: solid blueviolet;
+  background: rgb(244, 241, 222);
+  border: solid rgb(224, 122, 95);
   border-radius: 5px;
   padding: 5px;
 }
 
 /*! ARTICLE CARD */
 
-.articles-container {
-  justify-items: flex-end;
+.articles-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: flex-start;
+}
+
+.articles-list ul {
+  width: 100%;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul li {
+  width: 100%;
 }
 
 .article-card {
-  width: 100%;
-
   display: flex;
-
-  border: solid blue;
-  border-radius: 5px;
-  margin: 20px;
+  align-self: flex-end;
+  background: rgb(244, 241, 222);
+  border: solid rgb(61, 64, 91) 2px;
+  border-radius: 15px;
+  margin: 10px 10px;
   padding: 20px;
 }
 
 .article-card:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: rgb(61, 64, 91) 0px 2px, rgb(224, 122, 95) 0px 4px,
+    rgb(242, 204, 143) 0px 6px, rgb(244, 241, 222) 0px 8px;
 }
 
 .article-card-img {
+  border-radius: 50%;
   margin-right: 20px;
   width: 100px;
   align-self: center;
+}
+
+.article-card-img img {
+  border-radius: 10px;
 }
 
 .article-card-content {
@@ -238,6 +269,11 @@ body {
   justify-content: space-around;
 }
 
+#topic {
+  color: rgb(50, 52, 74);
+  font-style: italic;
+}
+
 .article-card h3 {
   font-size: large;
   font-weight: bold;
@@ -249,26 +285,31 @@ body {
 }
 
 .button-container {
-  justify-items: flex-start;
+  justify-items: center;
 }
 
 .articles-button {
-  min-width: 100px;
-  align-self: center;
-  border: solid blue;
-  border-radius: 5px;
+  width: 30%;
+  margin: 15px;
+  border-radius: 15px;
   height: 50%;
   padding: 10px 15px;
-  width: 20%;
-  line-height: 2;
-  margin: 15px;
+  background: rgb(244, 241, 222);
+  border: solid rgb(242, 204, 143);
 }
 
 .articles-button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(224, 122, 95);
 }
 
 /*! SINGLE ARTICLE */
+
+.single-article-container {
+  background: rgb(244, 241, 222);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .article-header {
   display: flex;
@@ -276,20 +317,22 @@ body {
   align-self: center;
   justify-self: center;
   align-items: flex-start;
-  margin: 10px;
   padding: 15px;
-  border-bottom: solid blueviolet;
   flex-grow: 1;
+  background: rgb(244, 241, 222);
 }
 
 .article-topic {
   align-self: center;
+  color: rgb(50, 52, 74);
+  font-style: italic;
 }
 
 .article-title {
   align-self: center;
   font-weight: bold;
-  font-size: large;
+  font-size: x-large;
+  color: rgb(50, 52, 74);
   margin: 5px;
 }
 
@@ -307,9 +350,15 @@ body {
 }
 
 .article-image {
-  width: 90%;
-  margin: 20px;
-  align-self: center;
+  width: 100%;
+  display: grid;
+}
+
+.article-image img {
+  margin-top: 15px;
+  width: 80%;
+  justify-self: center;
+  border-radius: 20px;
 }
 
 .article-votes {
@@ -321,13 +370,36 @@ body {
 }
 
 .article-votes button {
-  border: solid blue;
+  color: white;
+  font-size: x-large;
+  background: rgb(129, 178, 154);
+  border: solid rgb(61, 64, 91) 2px;
   width: 50px;
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 .article-votes button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+/*! CUSTOM MESSAGES */
+
+.error-container {
+  height: 100vh;
+  background: rgb(244, 241, 222);
+}
+
+.delete-text {
+  color: rgb(61, 64, 91);
+}
+
+.comment-loading-text {
+  color: rgb(61, 64, 91);
+}
+
+.vote-text {
+  color: rgb(61, 64, 91);
+  margin-top: 10px;
 }
 
 /*! COMMENT CARD */
@@ -335,13 +407,26 @@ body {
 .comments-section {
   display: flex;
   flex-direction: column;
+  margin: 15px;
+}
+
+.comment-count {
+  align-self: flex-start;
+  margin: 0 20px;
+  font-style: italic;
 }
 
 .comment-card-container {
-  border: solid black;
+  border: solid rgb(129, 178, 154) 2px;
   border-radius: 5px;
   margin: 15px;
   padding: 15px;
+  background: rgb(230, 227, 212);
+}
+
+#comment-author,
+#comment-date {
+  color: rgb(61, 64, 91);
 }
 
 .comment-card-middle-section {
@@ -356,11 +441,23 @@ body {
 }
 
 .comment-card-delete {
-  height: 30px;
   padding: 10px;
-  border: solid blue;
-  border-radius: 5px;
   line-height: 0.5;
+  height: 30px;
+  color: white;
+  font-size: medium;
+  background: rgb(129, 178, 154);
+  border: solid rgb(61, 64, 91) 2px;
+  width: 50px;
+  border-radius: 10px;
+}
+
+.comment-card-delete i {
+  line-height: 0.5;
+}
+
+.comment-card-delete:hover {
+  box-shadow: 5px 10px rgb(224, 122, 95);
 }
 
 .comment-card-header {
@@ -371,18 +468,19 @@ body {
 }
 
 .expandable-button {
-  align-self: center;
-  border: solid blue;
-  border-radius: 5px;
-  height: 50px;
-  width: 160px;
-  padding: 10px 15px;
   line-height: 1;
-  margin: 15px;
+  height: 50px;
+  color: white;
+  font-size: medium;
+  background: rgb(129, 178, 154);
+  border: solid rgb(61, 64, 91) 2px;
+  width: 30%;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
 .expandable-button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(224, 122, 95);
 }
 
 .comment-votes {
@@ -392,25 +490,29 @@ body {
 }
 
 .comment-votes button {
-  border: solid blue;
+  color: white;
+  font-size: medium;
+  background: rgb(129, 178, 154);
+  border: solid rgb(61, 64, 91) 2px;
   width: 30px;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 
 .comment-votes button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(224, 122, 95);
 }
 
 /*! COMMENT POST FORM */
 
 .form-container {
-  width: 92%;
+  width: 95%;
   align-self: center;
   display: flex;
   flex-direction: column;
-  border: solid black;
-  border-radius: 5px;
+  border: double rgb(129, 178, 154) 5px;
+  border-radius: 15px;
   padding: 20px;
+  margin-bottom: 15px;
 }
 
 .form-container label {
@@ -421,26 +523,51 @@ body {
   width: 100%;
   height: 60px;
   margin: 15px 0;
-  border: solid blueviolet;
+  border: solid rgb(105, 145, 125) 2px;
   border-radius: 5px;
   padding: 10px;
 }
 
 .form-container button {
-  align-self: center;
-  border: solid blue;
-  border-radius: 5px;
-  padding: 10px;
-  width: 80px;
-  line-height: 1;
   margin: 15px;
+  width: 80px;
+  line-height: 0.5;
+  padding: 10px;
+  align-self: center;
+  color: white;
+  font-size: medium;
+  background: rgb(129, 178, 154);
+  border: solid rgb(61, 64, 91) 2px;
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .form-container button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(224, 122, 95);
 }
 
 .error-text {
   color: red;
   font-weight: bold;
+}
+
+/*! ERROR PAGE */
+
+.error-page-section {
+  background: rgb(244, 241, 222);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.error-page-section h2 {
+  padding: 20px;
+  font-size: 1.5em;
+  color: rgb(61, 64, 91);
+}
+
+.not-found-animation {
+  margin: 30px;
 }
