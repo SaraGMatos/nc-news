@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Limelight:wght@400;700&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -7,498 +9,81 @@
   padding: 0;
   text-align: center;
   height: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif, "Montserrat Subrayada", Helvetica,
+    "Limelight", sans-serif;
 }
-
-@media (max-width: 480px) {
-  body {
-    width: 100%;
-    height: 100%;
-
-    font-family: comfortaa;
-  }
-
-  /*! LOGIN PAGE */
-
-  .login-page {
-    background-color: rgb(238, 244, 246);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-
-    height: 100%;
-  }
-
-  .login-page h1 {
-    font-weight: bolder;
-    font-size: xx-large;
-    width: 80vw;
-    padding: 15px;
-
-    border-bottom: solid blue;
-  }
-
-  .login-page form {
-    height: 200px;
-    width: 80%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    border: solid blue;
-    border-width: 3px;
-    border-radius: 25px;
-
-    background-color: rgb(218, 238, 245);
-  }
-
-  .input-field {
-    margin: 15px;
-
-    font-weight: bold;
-  }
-
-  .input-field input {
-    margin-left: 10px;
-    padding: 5px;
-    padding-left: 10px;
-    border-radius: 5px;
-  }
-
-  .login-page button {
-    margin: 10px;
-    border: solid blue;
-    border-radius: 20px;
-    width: 20%;
-    align-self: center;
-    font-weight: bold;
-    padding: 5px;
-    background-color: rgb(238, 244, 246);
-  }
-
-  .login-page button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  /*! HEADER */
-
-  .page-header {
-    width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: space-around;
-    border-bottom: solid blue;
-    border-bottom-width: 5px;
-    height: 15%;
-
-    padding: 20px;
-
-    background-color: rgb(218, 238, 245);
-  }
-
-  .header-content {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header-content h1 {
-    font-size: xx-large;
-    font-weight: bolder;
-  }
-
-  .header-button {
-    align-self: center;
-    border: solid blue;
-    border-radius: 5px;
-    height: 50%;
-    padding: 10px 15px;
-    min-width: 100px;
-    width: 20%;
-    line-height: 1;
-  }
-
-  .header-button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  /*! ARTICLES */
-
-  .articles-container {
-    margin: 20px;
-  }
-
-  .articles-container h2 {
-    margin: 20px;
-  }
-
-  .sorting-options {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .topics-select {
-    margin-top: 10px;
-    width: 30%;
-    font-size: small;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .topics-select select {
-    border: solid blueviolet;
-    border-radius: 5px;
-    padding: 5px;
-  }
-
-  .sort-by-select {
-    margin-top: 10px;
-    width: 30%;
-    font-size: small;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .sort-by-select select {
-    border: solid blueviolet;
-    border-radius: 5px;
-    padding: 5px;
-  }
-
-  .order-select {
-    margin-top: 10px;
-    width: 30%;
-    font-size: small;
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .order-select select {
-    border: solid blueviolet;
-    border-radius: 5px;
-    padding: 5px;
-  }
-
-  /*! ARTICLE CARD */
-
-  .articles-container {
-    justify-items: flex-end;
-  }
-
-  .article-card {
-    width: 100%;
-
-    display: flex;
-
-    border: solid blue;
-    border-radius: 5px;
-    margin: 20px;
-    padding: 20px;
-  }
-
-  .article-card:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  .article-card-img {
-    margin-right: 20px;
-    width: 100px;
-    align-self: center;
-  }
-
-  .article-card-content {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-around;
-  }
-
-  .article-card-topic-author {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .article-card h3 {
-    font-size: large;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-
-  .article-date {
-    align-self: flex-end;
-  }
-
-  .button-container {
-    justify-items: flex-start;
-  }
-
-  .articles-button {
-    min-width: 100px;
-    align-self: center;
-    border: solid blue;
-    border-radius: 5px;
-    height: 50%;
-    padding: 10px 15px;
-    width: 20%;
-    line-height: 2;
-    margin: 15px;
-  }
-
-  .articles-button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  /*! SINGLE ARTICLE */
-
-  .article-header {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    justify-self: center;
-    align-items: flex-start;
-    margin: 10px;
-    padding: 15px;
-    border-bottom: solid blueviolet;
-    flex-grow: 1;
-  }
-
-  .article-topic {
-    align-self: center;
-  }
-
-  .article-title {
-    align-self: center;
-    font-weight: bold;
-    font-size: large;
-    margin: 5px;
-  }
-
-  .article-author-date {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .article-body {
-    margin: 20px;
-    margin-top: 25px;
-    text-align: justify;
-  }
-
-  .article-image {
-    width: 90%;
-    margin: 20px;
-    align-self: center;
-  }
-
-  .article-votes {
-    display: flex;
-    width: 100%;
-    margin: 15px 0;
-    justify-content: space-evenly;
-    justify-self: center;
-  }
-
-  .article-votes button {
-    border: solid blue;
-    width: 50px;
-    border-radius: 2px;
-  }
-
-  .article-votes button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  /*! COMMENT CARD */
-
-  .comments-section {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .comment-card-container {
-    border: solid black;
-    border-radius: 5px;
-    margin: 15px;
-    padding: 15px;
-  }
-
-  .comment-card-middle-section {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .comment-card-body {
-    padding: 10px;
-    text-align: start;
-    margin-right: 15px;
-  }
-
-  .comment-card-delete {
-    height: 30px;
-    padding: 10px;
-    border: solid blue;
-    border-radius: 5px;
-    line-height: 0.5;
-  }
-
-  .comment-card-header {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    font-weight: bold;
-  }
-
-  .expandable-button {
-    align-self: center;
-    border: solid blue;
-    border-radius: 5px;
-    height: 50px;
-    width: 160px;
-    padding: 10px 15px;
-    line-height: 1;
-    margin: 15px;
-  }
-
-  .expandable-button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  .comment-votes {
-    display: flex;
-    width: 40%;
-    justify-content: space-evenly;
-  }
-
-  .comment-votes button {
-    border: solid blue;
-    width: 30px;
-    border-radius: 2px;
-  }
-
-  .comment-votes button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  /*! COMMENT POST FORM */
-
-  .form-container {
-    width: 92%;
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    border: solid black;
-    border-radius: 5px;
-    padding: 20px;
-  }
-
-  .form-container label {
-    font-weight: bold;
-  }
-
-  .form-container textarea {
-    width: 100%;
-    height: 60px;
-    margin: 15px 0;
-    border: solid blueviolet;
-    border-radius: 5px;
-    padding: 10px;
-  }
-
-  .form-container button {
-    align-self: center;
-    border: solid blue;
-    border-radius: 5px;
-    padding: 10px;
-    width: 80px;
-    line-height: 1;
-    margin: 15px;
-  }
-
-  .form-container button:hover {
-    box-shadow: 5px 10px rgb(142, 142, 218);
-  }
-
-  .error-text {
-    color: red;
-    font-weight: bold;
-  }
-}
-
-/*! ---------------------------------------------------------------------------------------------------------------- */
-
-/*? LARGER SCREENS */
 
 body {
   width: 100%;
   height: 100%;
-
-  font-family: comfortaa;
 }
 
 /*! LOGIN PAGE */
 
 .login-page {
-  background-color: rgb(238, 244, 246);
-
+  background: rgb(61, 64, 91);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
+  justify-content: space-evenly;
   height: 100%;
 }
 
 .login-page h1 {
   font-weight: bolder;
-  font-size: xx-large;
-  width: 80vw;
+  font-size: 4rem;
+  color: white;
+  width: 100vw;
   padding: 15px;
-
-  border-bottom: solid blue;
+  font-family: "Montserrat Subrayada", sans-serif;
+  border-bottom: double rgb(224, 122, 95) 10px;
 }
 
 .login-page form {
-  height: 200px;
+  height: 20rem;
   width: 80%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  border: solid blue;
-  border-width: 3px;
+  align-items: center;
+  border: double rgb(244, 241, 222) 10px;
   border-radius: 25px;
 
-  background-color: rgb(218, 238, 245);
+  background-color: rgb(224, 122, 95);
 }
 
 .input-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 15px;
-
+  margin-right: 25px;
   font-weight: bold;
 }
 
+.input-field label {
+  font-size: 1.2rem;
+  color: rgb(54, 57, 81);
+}
+
 .input-field input {
+  width: 100%;
   margin-left: 10px;
   padding: 5px;
   padding-left: 10px;
+  border: solid rgb(61, 64, 91);
   border-radius: 5px;
 }
 
 .login-page button {
+  color: rgb(54, 57, 81);
   margin: 10px;
-  border: solid blue;
-  border-radius: 20px;
-  width: 20%;
+  border: solid rgb(61, 64, 91);
+  border-radius: 15px;
+  width: 8rem;
   align-self: center;
   font-weight: bold;
   padding: 5px;
@@ -506,7 +91,7 @@ body {
 }
 
 .login-page button:hover {
-  box-shadow: 5px 10px rgb(142, 142, 218);
+  box-shadow: 5px 10px rgb(61, 64, 91);
 }
 
 /*! HEADER */
@@ -533,6 +118,7 @@ body {
 }
 
 .header-content h1 {
+  font-family: "Montserrat Subrayada", sans-serif;
   font-size: xx-large;
   font-weight: bolder;
 }
@@ -609,7 +195,6 @@ body {
 .order-select select {
   border: solid blueviolet;
   border-radius: 5px;
-  /* margin: 5px; */
   padding: 5px;
 }
 
@@ -853,4 +438,9 @@ body {
 
 .form-container button:hover {
   box-shadow: 5px 10px rgb(142, 142, 218);
+}
+
+.error-text {
+  color: red;
+  font-weight: bold;
 }

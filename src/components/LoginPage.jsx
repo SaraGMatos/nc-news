@@ -26,7 +26,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       <div>
-        <h1>WELCOME TO NC NEWS</h1>
+        <h1>NC NEWS</h1>
       </div>
 
       <form onSubmit={handleSubmit}>
