@@ -31,7 +31,7 @@ function CommentCard({ setComments, comment, articleId }) {
     deleteCommentById(comment.comment_id).then(() => {
       setComments((currComments) =>
         currComments.filter(
-          (comment) => comment.comment_id !== comment.comment_id
+          (singleComment) => singleComment.comment_id !== comment.comment_id
         )
       );
       setIsDeleteLoading(false);
@@ -54,7 +54,7 @@ function CommentCard({ setComments, comment, articleId }) {
         <p className="comment-card-body">{comment.body}</p>
         {comment.author === "grumpy19" ? (
           <button className="comment-card-delete" onClick={handleDelete}>
-            <i class="fa-solid fa-trash"></i>
+            <i className="fa-solid fa-trash"></i>
           </button>
         ) : null}
       </div>

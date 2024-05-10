@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticleById } from "../../api";
+import { UserContext } from "../contexts/User";
 import Header from "./Header";
 import SingleArticleHeader from "./SingleArticleHeader";
-import { useContext } from "react";
-import { UserContext } from "../contexts/User";
 import Expandable from "./Expandable";
 import ArticleComments from "./ArticleComments";
+import LoadingPage from "./LoadingPage";
+import { fetchArticleById } from "../../api";
 import { updateArticleByArticleId } from "../../api";
 
 function SingleArticle() {
@@ -16,12 +16,15 @@ function SingleArticle() {
   const [voteUpdate, setVoteUpdate] = useState(0);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
 
   function getArticleById() {
+    setIsPageLoading(true);
     fetchArticleById(id)
       .then((articleData) => {
         const articleInfo = articleData.data.article;
         setArticle(articleInfo);
+        setIsPageLoading(false);
       })
       .catch(() => {
         setError(true);
@@ -29,6 +32,10 @@ function SingleArticle() {
   }
 
   useEffect(getArticleById, [id]);
+
+  if (isPageLoading) {
+    return <LoadingPage message={"We're fetching the article!"} />;
+  }
 
   function handleVote(vote) {
     setIsLoading(true);

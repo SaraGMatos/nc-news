@@ -16,7 +16,7 @@ function ArticleComments({ id, article }) {
       setIsLoading(false);
     });
   }
-  useEffect(getCommentsById, [id, comments.length]);
+  useEffect(getCommentsById, [id]);
 
   if (isLoading) {
     return (

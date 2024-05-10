@@ -1,12 +1,13 @@
 import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../contexts/User";
+import { useSearchParams } from "react-router-dom";
 import { fetchArticles } from "../../api";
 import Header from "./Header";
 import ArticleCard from "./ArticleCard";
-import { UserContext } from "../contexts/User";
 import TopicsSelect from "./TopicsSelect";
-import { useSearchParams } from "react-router-dom";
 import SortBySelect from "./SortBySelect";
 import OrderSelect from "./OrderSelect";
+import LoadingPage from "./LoadingPage";
 
 function Articles() {
   const [articles, setArticles] = useState([]);
@@ -31,6 +32,8 @@ function Articles() {
   }
 
   function getArticles() {
+    setIsLoading(true);
+
     window.scrollTo(0, 0);
 
     if (currentTopic) {
@@ -47,8 +50,6 @@ function Articles() {
       setSearchParams(params);
     }
     setSearchParams(params);
-
-    setIsLoading(true);
 
     fetchArticles(currentPage, currentTopic, currentSortBy, currentOrder).then(
       (articlesData) => {
@@ -67,7 +68,13 @@ function Articles() {
   ]);
 
   if (isPageLoading) {
-    return <h2 className="loading-text">Page loading, please wait...</h2>;
+    return (
+      <LoadingPage
+        message={
+          "Please note our server spins down with inactivity, so it can take a wee while (~1m) to get it back up!"
+        }
+      />
+    );
   }
 
   return (
