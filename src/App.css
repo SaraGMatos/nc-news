@@ -151,15 +151,17 @@ body {
 }
 
 .sorting-options {
+  position: fixed;
+  width: 100%;
+  justify-self: center;
   display: flex;
-  flex-wrap: wrap;
-  margin: 0 20px;
+  margin: -07px 0px;
   justify-content: space-between;
   background-color: rgb(129, 178, 154);
 }
 
 .topics-select {
-  margin-top: 10px;
+  margin: 10px 10px;
   width: 30%;
   font-size: small;
   font-weight: bold;
@@ -196,7 +198,7 @@ body {
 }
 
 .order-select {
-  margin-top: 10px;
+  margin: 10px 10px;
   width: 30%;
   font-size: small;
   font-weight: bold;
@@ -233,6 +235,7 @@ body {
 
 .articles-list {
   width: 100%;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-items: flex-start;
