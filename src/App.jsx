@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="*" element={<ErrorPage />} />
         <Route path="/" element={<LoginPage />} />
+        <Route path="*" element={<ErrorPage />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:id" element={<SingleArticle />} />
       </Routes>
