@@ -7,6 +7,7 @@ import ErrorAlert from "./ErrorAlert";
 function ArticleComments({ id, article }) {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [commentCount, setCommentCount] = useState(article.comment_count);
 
   function getCommentsById() {
     setIsLoading(true);
@@ -28,8 +29,12 @@ function ArticleComments({ id, article }) {
       {comments.length === 0 ? (
         <ErrorAlert message={"No comments here yet!"} />
       ) : null}
-      <PostCommentForm id={id} setComments={setComments} />
-      <p className="comment-count">{`${article.comment_count} comments`}</p>
+      <PostCommentForm
+        id={id}
+        setComments={setComments}
+        setCommentCount={setCommentCount}
+      />
+      <p className="comment-count">{`${commentCount} comments`}</p>
       <ul>
         {comments.map((comment) => {
           return (
@@ -37,7 +42,7 @@ function ArticleComments({ id, article }) {
               <CommentCard
                 setComments={setComments}
                 comment={comment}
-                articleId={id}
+                setCommentCount={setCommentCount}
               />
             </li>
           );

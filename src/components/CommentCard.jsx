@@ -3,12 +3,13 @@ import { updateVoteByCommentId } from "../../api";
 import { deleteCommentById } from "../../api";
 import ErrorAlert from "./ErrorAlert";
 
-function CommentCard({ setComments, comment, articleId }) {
+function CommentCard({ setComments, comment, setCommentCount }) {
   const [voteCount, updateVoteCount] = useState(comment.votes);
   const [voteUpdate, setVoteUpdate] = useState(0);
   const [error, setError] = useState(null);
   const [isVoteLoading, setIsVoteLoading] = useState(false);
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   function handleVote(vote) {
     setIsVoteLoading(true);
@@ -28,12 +29,15 @@ function CommentCard({ setComments, comment, articleId }) {
 
   function handleDelete() {
     setIsDeleteLoading(true);
+    setIsClicked(true);
     deleteCommentById(comment.comment_id).then(() => {
       setComments((currComments) =>
         currComments.filter(
           (singleComment) => singleComment.comment_id !== comment.comment_id
         )
       );
+      setIsClicked(false);
+      setCommentCount((currCount) => currCount - 1);
       setIsDeleteLoading(false);
     });
   }
@@ -46,14 +50,20 @@ function CommentCard({ setComments, comment, articleId }) {
     <section className="comment-card-container">
       <div className="comment-card-header">
         <h2 id="comment-author">{comment.author}</h2>
-        <h3 id="comment-date">
-          {moment(comment.created_at).format("DD MMM YYYY")}
-        </h3>
+        <div className="comment-timestamp">
+          <h3 id="comment-date">
+            {moment(comment.created_at).format("DD MMM YYYY HH:mm")}
+          </h3>
+        </div>
       </div>
       <div className="comment-card-middle-section">
         <p className="comment-card-body">{comment.body}</p>
         {comment.author === "grumpy19" ? (
-          <button className="comment-card-delete" onClick={handleDelete}>
+          <button
+            className="comment-card-delete"
+            disabled={isClicked}
+            onClick={handleDelete}
+          >
             <i className="fa-solid fa-trash"></i>
           </button>
         ) : null}

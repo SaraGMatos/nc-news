@@ -14,13 +14,16 @@ function ArticleCard({ article }) {
             <p id="author">{article.author}</p>
           </div>
           <h3>
-            {article.title.length < 56
+            {article.title.length < 40
               ? article.title
-              : article.title.slice(0, 56) + "..."}
+              : article.title.slice(0, 40) + "..."}
           </h3>
-          <p className="article-date">
-            {moment(article.created_at).format("DD MMM YYYY")}
-          </p>
+          <div className="third-section">
+            <p>{article.comment_count} comments</p>
+            <p className="article-date">
+              {moment(article.created_at).format("DD MMM YYYY")}
+            </p>
+          </div>
         </div>
       </div>
     </Link>

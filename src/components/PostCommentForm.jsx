@@ -1,19 +1,23 @@
 import { addCommentByArticleId } from "../../api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function PostCommentForm({ id, setComments }) {
+function PostCommentForm({ id, setComments, setCommentCount }) {
   const [newComment, setNewComment] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const [error, setError] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
+    setIsClicked(true);
     setIsLoading(true);
     addCommentByArticleId(id, newComment)
       .then((response) => {
         setComments((currComments) => {
           return [response.data.comment, ...currComments];
         });
+        setCommentCount((currCount) => currCount + 1);
+        setIsClicked(false);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -39,7 +43,9 @@ function PostCommentForm({ id, setComments }) {
         }}
       ></textarea>
       {error && <h2 className="error-text">Please write something!</h2>}
-      <button className="submit-button">Post</button>
+      <button className="submit-button" disabled={isClicked}>
+        Post
+      </button>
       {isLoading && (
         <h2 className="loading-text">
           Your post is on its way, please wait...

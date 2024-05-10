@@ -121,7 +121,7 @@ body {
 
 .header-content h1 {
   font-family: "Montserrat Subrayada", sans-serif;
-  font-size: 3em;
+  font-size: 2.6em;
   font-weight: bolder;
 }
 
@@ -141,6 +141,7 @@ body {
 /*! ARTICLES */
 .articles-container {
   padding-top: 140px;
+  min-height: 100vh;
   width: 100%;
   background-color: rgb(129, 178, 154);
 }
@@ -151,6 +152,7 @@ body {
 
 .sorting-options {
   display: flex;
+  flex-wrap: wrap;
   margin: 0 20px;
   justify-content: space-between;
   background-color: rgb(129, 178, 154);
@@ -209,7 +211,25 @@ body {
   padding: 5px;
 }
 
-/*! ARTICLE CARD */
+.articles-button {
+  width: 30%;
+  margin: 15px;
+  border-radius: 15px;
+  height: 50%;
+  padding: 10px 15px;
+  background: rgb(244, 241, 222);
+  border: solid rgb(242, 204, 143);
+}
+
+.articles-button:enabled:hover {
+  box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+.articles-button:disabled {
+  background-color: rgb(160, 102, 87);
+  color: rgb(244, 241, 222);
+  border: solid rgb(160, 102, 87);
+}
 
 .articles-list {
   width: 100%;
@@ -222,7 +242,8 @@ body {
   width: 100%;
   margin-top: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
 }
 
@@ -230,9 +251,12 @@ ul li {
   width: 100%;
 }
 
+/*! ARTICLE CARD */
+
 .article-card {
   display: flex;
   align-self: flex-end;
+  height: 200px;
   background: rgb(244, 241, 222);
   border: solid rgb(61, 64, 91) 2px;
   border-radius: 15px;
@@ -280,32 +304,22 @@ ul li {
   margin: 10px 0;
 }
 
-.article-date {
-  align-self: flex-end;
+.third-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  color: rgb(50, 52, 74);
 }
 
 .button-container {
   justify-items: center;
 }
 
-.articles-button {
-  width: 30%;
-  margin: 15px;
-  border-radius: 15px;
-  height: 50%;
-  padding: 10px 15px;
-  background: rgb(244, 241, 222);
-  border: solid rgb(242, 204, 143);
-}
-
-.articles-button:hover {
-  box-shadow: 5px 10px rgb(224, 122, 95);
-}
-
 /*! SINGLE ARTICLE */
 
 .single-article-container {
   background: rgb(244, 241, 222);
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -379,8 +393,14 @@ ul li {
   border-radius: 10px;
 }
 
-.article-votes button:hover {
+.article-votes button:enabled:hover {
   box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+.article-votes button:disabled {
+  background-color: rgb(160, 102, 87);
+  color: rgb(244, 241, 222);
+  border: solid rgb(160, 102, 87);
 }
 
 /*! CUSTOM MESSAGES */
@@ -425,14 +445,27 @@ ul li {
   background: rgb(230, 227, 212);
 }
 
-#comment-author,
-#comment-date {
+.comment-timestamp {
+  display: flex;
+  color: rgb(61, 64, 91);
+}
+
+#comment-author {
   color: rgb(61, 64, 91);
 }
 
 .comment-card-middle-section {
   display: flex;
+  width: 100%;
   justify-content: space-between;
+}
+
+.comment-card-body {
+  margin-top: 15px;
+  max-height: 75px;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  margin: 10px 0;
 }
 
 .comment-card-body {
@@ -443,7 +476,9 @@ ul li {
 
 .comment-card-delete {
   padding: 10px;
+  margin: 10px;
   line-height: 0.5;
+  align-self: center;
   height: 30px;
   color: white;
   font-size: medium;
@@ -457,8 +492,14 @@ ul li {
   line-height: 0.5;
 }
 
-.comment-card-delete:hover {
+.comment-card-delete:enabled:hover {
   box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+.comment-card-delete:disabled {
+  background-color: rgb(160, 102, 87);
+  color: rgb(244, 241, 222);
+  border: solid rgb(160, 102, 87);
 }
 
 .comment-card-header {
@@ -499,8 +540,14 @@ ul li {
   border-radius: 5px;
 }
 
-.comment-votes button:hover {
+.comment-votes button:enabled:hover {
   box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+.comment-votes button:disabled {
+  background-color: rgb(160, 102, 87);
+  color: rgb(244, 241, 222);
+  border: solid rgb(160, 102, 87);
 }
 
 /*! COMMENT POST FORM */
@@ -544,8 +591,14 @@ ul li {
   border-radius: 5px;
 }
 
-.form-container button:hover {
+.form-container button:enabled:hover {
   box-shadow: 5px 10px rgb(224, 122, 95);
+}
+
+.form-container button:disabled {
+  background-color: rgb(160, 102, 87);
+  color: rgb(244, 241, 222);
+  border: solid rgb(160, 102, 87);
 }
 
 .error-text {
