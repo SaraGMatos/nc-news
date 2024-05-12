@@ -2,20 +2,28 @@
 
 ## What is this?
 
-This is a web application that allows users to access the _NC News_ platform, a site similar to Reddit where users can, for now, read articles, vote them, and post, delete and vote comments.
+This is a web application that allows users to access the _NC News_ platform, a site similar to Reddit where users can, for now, read articles, vote them, and post, delete and vote comments. 
 
-_NC News_ is also the front-end result of a full-stack project (feel free to have a look at our [API](https://github.com/SaraGMatos/backend-project)) and has been developed using [ReactJS](https://react.dev/).
+_NC News_ is also the front-end result of a full-stack project (feel free to have a look at our [API](https://github.com/SaraGMatos/backend-project)) and has been developed using [ReactJS](https://react.dev/). 
 
-Would you like to have a look at the Netlify hosted version? Have a peek [here](https://my-ncnews.netlify.app/). Please note that our server spins down with inactivity and it can take about 50 seconds or more to get it back up again.
+Would you like to have a look at the Netlify hosted version? Have a peek [here](https://my-ncnews.netlify.app/). Please note that, even though the app is viewable in a variety of devices, it is best experienced on mobile. Also please be aware that our server spins down with inactivity and it can take about 50 seconds or more to get it back up again!
 
 ## What functionality is there?
 
-Users can:
+Users can, so far:
 
 - Log in using a mock login page
 - In the main articles view, explore a list of article cards that display the article's image, title, author, date of creation, and comment and vote count
 - Navigate within the main articles view through pagination
-- ...
+- Filter articles by topic
+- Sort articles by order, comment count, votes and date
+- Read a particular listed article
+- Vote an article
+- Comment on an article
+- Vote other comments
+- Delete your own comments
+- Go back the main articles page by clicking on the platform heading
+- Log out
 
 ## Want to run this locally?
 
